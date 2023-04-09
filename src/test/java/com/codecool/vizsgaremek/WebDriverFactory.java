@@ -12,7 +12,10 @@ public class WebDriverFactory {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("incognito", "start-maximized", "disable-extensions", "ignore-certificate-errors");
         options.addArguments("remote-allow-origins=*");
-        //options.addArguments("--headless");
+        //options.addArguments("--disable-dev-shm-usage");
+        //options.addArguments("--disable-notifications");
+        //options.addArguments("--disable-extensions");
+        //options.addArguments("headless");
 
         return new ChromeDriver(options);
     }

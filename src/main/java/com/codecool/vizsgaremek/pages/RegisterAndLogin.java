@@ -6,16 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 public class RegisterAndLogin extends Page{
 
-    //Registration testdata - VALID
-    public final String REGISTER_VALID_USER = "tester";
-    public final String REGISTER_VALID_PWD = "1234";
-    public final String REGISTER_VALID_EMAIL = "testercc@whatever.com";
-    public final String REGISTER_VALID_DESCRIPTION = "";
 
-    //Login testdata - VALID
-    private final String LOGIN_USERNAME = "beckz";
-    private final String LOGIN_PWD = "30y123";
     private final By BUTTON_TERMS_AND_CONDITIONS = By.id("terms-and-conditions-button");
+
+    //Registration fields and buttons
     private final By BUTTON_REGISTER_FORM = By.xpath("//div[@id='login']/button[@id='register-form-button']");
     private final By INPUT_REGISTER_NAME = By.id("register-username");
     private final By INPUT_REGISTER_PWD = By.id("register-password");
@@ -23,6 +17,15 @@ public class RegisterAndLogin extends Page{
     private final By INPUT_REGISTER_DESCRIPTION = By.id("register-description");
     private final By BUTTON_REGISTER = By.xpath("//*[@onclick='registerUser()']");
     private final By REGISTER_ALERT = By.xpath("//p[@id='register-alert']");
+
+    //Login fields and buttons
+    private final By BUTTON_LOGIN_FORM = By.xpath("//div[@id='register']/button[@onclick='showLogin()']");
+    private final By INPUT_LOGIN_EMAIL = By.id("email");
+    private final By INPUT_LOGIN_PWD = By.id("password");
+    private final By BUTTON_LOGIN = By.xpath("//*[@onclick='myFunction()']");
+    private final By BUTTON_LOGOUT = By.xpath("//*[@onclick='logout()']");
+
+
     public RegisterAndLogin(WebDriver driver) {
         super(driver, Pages.URL_REGISTER_AND_LOGIN.getURL());
     }
@@ -43,6 +46,19 @@ public class RegisterAndLogin extends Page{
     public boolean registerValidation() {
         return findElementOnPage(REGISTER_ALERT).getText().equals("User registered!");
     }
+    public void switchToLogin() {
+        findElementOnPage(BUTTON_LOGIN_FORM).click();
+    }
+    public void login(String email, String pwd) {
+        findElementOnPage(INPUT_LOGIN_EMAIL).sendKeys(email);
+        findElementOnPage(INPUT_LOGIN_PWD).sendKeys(pwd);
+        findElementOnPage(BUTTON_LOGIN).click();
+    }
+
+    public boolean loginValidation() {
+        return findElementOnPage(BUTTON_LOGOUT).isDisplayed();
+    }
+
 
 
 

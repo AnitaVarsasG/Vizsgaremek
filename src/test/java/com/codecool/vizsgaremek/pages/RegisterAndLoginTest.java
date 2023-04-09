@@ -16,6 +16,16 @@ class RegisterAndLoginTest {
     RegisterAndLogin registerAndLogin;
     WebDriver driver;
 
+    //Registration testdata - VALID
+    public final String REGISTER_VALID_USER = "tester";
+    public final String REGISTER_VALID_PWD = "1234";
+    public final String REGISTER_VALID_EMAIL = "testercc@whatever.com";
+    public final String REGISTER_VALID_DESCRIPTION = "";
+
+    //Login testdata - VALID
+    private final String LOGIN_USERNAME = "beckz";
+    private final String LOGIN_PWD = "30y123";
+
     @BeforeEach
     void setUp() {
 
@@ -35,28 +45,39 @@ class RegisterAndLoginTest {
     @Test
     void testRegistrationWithValidData() {
         registerAndLogin.acceptTermsAndConditions();
-        registerAndLogin.registration(registerAndLogin.REGISTER_VALID_USER,
-                registerAndLogin.REGISTER_VALID_PWD,
-                registerAndLogin.REGISTER_VALID_EMAIL,
-                registerAndLogin.REGISTER_VALID_DESCRIPTION);
+        registerAndLogin.registration(REGISTER_VALID_USER, REGISTER_VALID_PWD, REGISTER_VALID_EMAIL, REGISTER_VALID_DESCRIPTION);
 
         Assertions.assertTrue(registerAndLogin.registerValidation());
     }
-/*
+
     @Test
     void testRegistrationWithInvalidData() {
         registerAndLogin.acceptTermsAndConditions();
-        registerAndLogin.registration();
+        registerAndLogin.registration("", "", "", "");
 
         Assertions.assertFalse(registerAndLogin.registerValidation());
-    }*/
+    }
 
     @Test
-    void testLogin() {
+    void testLoginAfterRegistration() {
+        registerAndLogin.acceptTermsAndConditions();
+        registerAndLogin.registration(REGISTER_VALID_USER, REGISTER_VALID_PWD, REGISTER_VALID_EMAIL, REGISTER_VALID_DESCRIPTION);
+        registerAndLogin.switchToLogin();
+        registerAndLogin.login(REGISTER_VALID_USER, REGISTER_VALID_PWD);
 
+        Assertions.assertTrue(registerAndLogin.loginValidation());
+    }
+
+    @Test
+    void testLoginFromLandingPage() {
+        registerAndLogin.acceptTermsAndConditions();
+        registerAndLogin.login(LOGIN_USERNAME, LOGIN_PWD);
+
+        Assertions.assertTrue(registerAndLogin.loginValidation());
     }
 
     @AfterEach
     void tearDown() {
+        //driver.quit();
     }
 }
