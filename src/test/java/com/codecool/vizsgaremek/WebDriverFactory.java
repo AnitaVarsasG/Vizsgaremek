@@ -11,7 +11,8 @@ public class WebDriverFactory {
     public static WebDriver getWebDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("incognito", "start-maximized", "disable-extensions", "ignore-certificate-errors");
-        //options.addArguments("remote-allow-origins=*", "incognito", "start-maximized", "ignore-certificate-errors");
+        options.addArguments("remote-allow-origins=*");
+        //options.addArguments("--headless");
 
         return new ChromeDriver(options);
     }
