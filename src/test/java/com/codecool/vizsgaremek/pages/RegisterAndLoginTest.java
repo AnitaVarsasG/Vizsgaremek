@@ -3,11 +3,14 @@ package com.codecool.vizsgaremek.pages;
 import com.codecool.vizsgaremek.WebDriverFactory;
 import com.codecool.vizsgaremek.enums.Pages;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,16 +18,6 @@ class RegisterAndLoginTest {
 
     RegisterAndLogin registerAndLogin;
     WebDriver driver;
-
-    //Registration testdata - VALID
-    public final String REGISTER_VALID_USER = "tester";
-    public final String REGISTER_VALID_PWD = "1234";
-    public final String REGISTER_VALID_EMAIL = "testercc@whatever.com";
-    public final String REGISTER_VALID_DESCRIPTION = "";
-
-    //Login testdata - VALID
-    private final String LOGIN_USERNAME = "beckz";
-    private final String LOGIN_PWD = "30y123";
 
     @BeforeEach
     void setUp() {
@@ -45,7 +38,7 @@ class RegisterAndLoginTest {
     @Test
     void testRegistrationWithValidData() {
         registerAndLogin.acceptTermsAndConditions();
-        registerAndLogin.registration(REGISTER_VALID_USER, REGISTER_VALID_PWD, REGISTER_VALID_EMAIL, REGISTER_VALID_DESCRIPTION);
+        registerAndLogin.registration();
 
         Assertions.assertTrue(registerAndLogin.registerValidation());
     }
@@ -53,7 +46,7 @@ class RegisterAndLoginTest {
     @Test
     void testRegistrationWithInvalidData() {
         registerAndLogin.acceptTermsAndConditions();
-        registerAndLogin.registration("", "", "", "");
+        registerAndLogin.invalidRegistration();
 
         Assertions.assertFalse(registerAndLogin.registerValidation());
     }
@@ -61,9 +54,9 @@ class RegisterAndLoginTest {
     @Test
     void testLoginAfterRegistration() {
         registerAndLogin.acceptTermsAndConditions();
-        registerAndLogin.registration(REGISTER_VALID_USER, REGISTER_VALID_PWD, REGISTER_VALID_EMAIL, REGISTER_VALID_DESCRIPTION);
+        registerAndLogin.registration();
         registerAndLogin.switchToLogin();
-        registerAndLogin.login(REGISTER_VALID_USER, REGISTER_VALID_PWD);
+        registerAndLogin.login();
 
         Assertions.assertTrue(registerAndLogin.loginValidation());
     }
@@ -71,13 +64,21 @@ class RegisterAndLoginTest {
     @Test
     void testLoginFromLandingPage() {
         registerAndLogin.acceptTermsAndConditions();
-        registerAndLogin.login(LOGIN_USERNAME, LOGIN_PWD);
+        registerAndLogin.login();
 
         Assertions.assertTrue(registerAndLogin.loginValidation());
     }
 
+    @Test
+    void testLoginFromLandingPageWithInvalidDate() {
+        registerAndLogin.acceptTermsAndConditions();
+        registerAndLogin.invalidLogin();
+
+        Assertions.assertTrue(registerAndLogin.loginFaildValidation());
+    }
+
     @AfterEach
     void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 }
