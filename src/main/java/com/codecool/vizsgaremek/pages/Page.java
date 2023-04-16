@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
+import java.util.List;
 
 abstract class Page {
     WebDriver driver;
@@ -31,6 +32,10 @@ abstract class Page {
 
     protected final WebElement findElementOnPage(By locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    protected final List<WebElement> findElementsOnPage(By locator) {
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
 
     public final boolean validateUrl(String Url, Pages url) {

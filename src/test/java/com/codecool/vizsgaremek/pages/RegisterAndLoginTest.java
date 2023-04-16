@@ -3,7 +3,6 @@ package com.codecool.vizsgaremek.pages;
 import com.codecool.vizsgaremek.WebDriverFactory;
 import com.codecool.vizsgaremek.enums.Pages;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

@@ -6,6 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 public class RegisterAndLogin extends Page{
 
+    public RegisterAndLogin(WebDriver driver) {
+        super(driver, Pages.URL_REGISTER_AND_LOGIN.getURL());
+    }
+
     //Registration testdata - VALID
     public final String REGISTER_VALID_USER = "tester";
     public final String REGISTER_VALID_PWD = "1234";
@@ -35,9 +39,7 @@ public class RegisterAndLogin extends Page{
     private final By LOGIN_ALERT = By.id("alert");
 
 
-    public RegisterAndLogin(WebDriver driver) {
-        super(driver, Pages.URL_REGISTER_AND_LOGIN.getURL());
-    }
+
 
     public void acceptTermsAndConditions() {
         findElementOnPage(BUTTON_TERMS_AND_CONDITIONS).click();
