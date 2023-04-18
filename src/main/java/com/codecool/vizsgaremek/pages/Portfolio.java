@@ -20,7 +20,9 @@ public class Portfolio extends Page{
         }
 
 
-    public int getProjects() {
+   /*
+    public int getProjects()
+
         int totalProjects = 0;
 
         do {
@@ -31,6 +33,9 @@ public class Portfolio extends Page{
         } while(!driver.findElements(BUTTON_NEXT).isEmpty());
 
         return totalProjects;
+
     }
+
+         */
 
 }

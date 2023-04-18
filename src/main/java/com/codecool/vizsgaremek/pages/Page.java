@@ -14,16 +14,11 @@ import java.util.List;
 
 abstract class Page {
     WebDriver driver;
-    private final Wait<WebDriver> wait;
     private final String url;
 
     protected Page(WebDriver driver, String url) {
         this.driver = driver;
         this.url = url;
-        this.wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(NoSuchElementException.class);
     }
 
     public final void navigateToUrl() {
@@ -31,11 +26,11 @@ abstract class Page {
     }
 
     protected final WebElement findElementOnPage(By locator) {
-        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return driver.findElement(locator);
     }
 
     protected final List<WebElement> findElementsOnPage(By locator) {
-        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+        return driver.findElements(locator);
     }
 
     public final boolean validateUrl(String Url, Pages url) {

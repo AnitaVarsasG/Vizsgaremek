@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,11 +29,13 @@ class AboutPageTest {
         WebDriverManager.chromedriver().setup();
 
         driver = WebDriverFactory.getWebDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         aboutPage = new AboutPage(driver);
         aboutPage.navigateToUrl();
     }
 
+    //Read team members' names from teammembers.txt and put them into a String array
     public String[] readFile() {
         List<String> members = new ArrayList<>();
         try {
@@ -60,7 +63,7 @@ class AboutPageTest {
     }
 
 
-    //TODO név-foglalkozás páros összehasonlítása key-value páros listával
+    //TODO compare names and professionals with an expected key-value list
 
 
     @AfterEach

@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @Epic("Roxo")
@@ -29,6 +31,7 @@ class ContactPageTest {
         WebDriverManager.chromedriver().setup();
 
         driver = WebDriverFactory.getWebDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         contactPage = new ContactPage(driver);
         contactPage.navigateToUrl();
@@ -63,6 +66,7 @@ class ContactPageTest {
     @Severity(SeverityLevel.NORMAL)
     @Epic("Roxo")
     @Story("Verify Contact Form")
+    @DisplayName("Contact Form test with empty fields")
     @Description("Contact Form test with empty fields")
     void contactFormTestInvalid() {
 
@@ -74,7 +78,7 @@ class ContactPageTest {
 
     }
 
-    //TODO többszörös fájlból kiolvasás
+    //TODO fill the form multiply from file data
 
     @AfterEach
     void tearDown() {

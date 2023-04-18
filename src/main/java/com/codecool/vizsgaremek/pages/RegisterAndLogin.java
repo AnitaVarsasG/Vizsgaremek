@@ -10,15 +10,9 @@ public class RegisterAndLogin extends Page{
         super(driver, Pages.URL_REGISTER_AND_LOGIN.getURL());
     }
 
-    //Registration testdata - VALID
-    public final String REGISTER_VALID_USER = "tester";
-    public final String REGISTER_VALID_PWD = "1234";
-    public final String REGISTER_VALID_EMAIL = "testercc@whatever.com";
-    public final String REGISTER_VALID_DESCRIPTION = "";
 
-    //Login testdata - VALID
-    private final String LOGIN_USERNAME = "beckz";
-    private final String LOGIN_PWD = "30y123";
+
+
     private final By BUTTON_TERMS_AND_CONDITIONS = By.id("terms-and-conditions-button");
 
     //Registration fields and buttons
@@ -45,12 +39,12 @@ public class RegisterAndLogin extends Page{
         findElementOnPage(BUTTON_TERMS_AND_CONDITIONS).click();
     }
 
-    public void registration() {
+    public void registration(String user, String pwd, String email, String description) {
         findElementOnPage(BUTTON_REGISTER_FORM).click();
-        findElementOnPage(INPUT_REGISTER_NAME).sendKeys(REGISTER_VALID_USER);
-        findElementOnPage(INPUT_REGISTER_PWD).sendKeys(REGISTER_VALID_PWD);
-        findElementOnPage(INPUT_REGISTER_EMAIL).sendKeys(REGISTER_VALID_EMAIL);
-        findElementOnPage(INPUT_REGISTER_DESCRIPTION).sendKeys(REGISTER_VALID_DESCRIPTION);
+        findElementOnPage(INPUT_REGISTER_NAME).sendKeys(user);
+        findElementOnPage(INPUT_REGISTER_PWD).sendKeys(pwd);
+        findElementOnPage(INPUT_REGISTER_EMAIL).sendKeys(email);
+        findElementOnPage(INPUT_REGISTER_DESCRIPTION).sendKeys(description);
         findElementOnPage(BUTTON_REGISTER).click();
     }
 
@@ -69,9 +63,9 @@ public class RegisterAndLogin extends Page{
     public void switchToLogin() {
         findElementOnPage(BUTTON_LOGIN_FORM).click();
     }
-    public void login() {
-        findElementOnPage(INPUT_LOGIN_EMAIL).sendKeys(LOGIN_USERNAME);
-        findElementOnPage(INPUT_LOGIN_PWD).sendKeys(LOGIN_PWD);
+    public void login(String email, String pwd) {
+        findElementOnPage(INPUT_LOGIN_EMAIL).sendKeys(email);
+        findElementOnPage(INPUT_LOGIN_PWD).sendKeys(pwd);
         findElementOnPage(BUTTON_LOGIN).click();
     }
 

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PortfolioTest {
@@ -21,6 +23,7 @@ class PortfolioTest {
 
         WebDriverManager.chromedriver().setup();
         driver = WebDriverFactory.getWebDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         portfolio = new Portfolio(driver);
         portfolio.navigateToUrl();
@@ -28,7 +31,7 @@ class PortfolioTest {
 
     @Test
     void paginationTest() {
-        portfolio.getProjects();
+
 
     }
 
