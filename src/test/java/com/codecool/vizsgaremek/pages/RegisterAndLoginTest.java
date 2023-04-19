@@ -6,6 +6,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
@@ -13,6 +14,7 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Story("Verify registration and login")
 class RegisterAndLoginTest {
 
     RegisterAndLogin registerAndLogin;
