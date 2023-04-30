@@ -48,17 +48,6 @@ public class RegisterAndLogin extends Page{
         driver.findElement(BUTTON_REGISTER).click();
     }
 
-
-    // törölni
-    public void invalidRegistration() {
-        driver.findElement(BUTTON_REGISTER_FORM).click();
-        driver.findElement(INPUT_REGISTER_NAME).sendKeys("");
-        driver.findElement(INPUT_REGISTER_PWD).sendKeys("");
-        driver.findElement(INPUT_REGISTER_EMAIL).sendKeys("");
-        driver.findElement(INPUT_REGISTER_DESCRIPTION).sendKeys("");
-        driver.findElement(BUTTON_REGISTER).click();
-    }
-
     public boolean registerValidation() {
         return driver.findElement(REGISTER_ALERT).getText().equals("User registered!");
     }
@@ -70,20 +59,15 @@ public class RegisterAndLogin extends Page{
         driver.findElement(INPUT_LOGIN_PWD).sendKeys(pwd);
         driver.findElement(BUTTON_LOGIN).click();
     }
-// törölni
-    public void invalidLogin() {
-        driver.findElement(INPUT_LOGIN_EMAIL).sendKeys("");
-        driver.findElement(INPUT_LOGIN_PWD).sendKeys("");
-        driver.findElement(BUTTON_LOGIN).click();
-    }
 
     public boolean loginValidation() {
         return driver.findElement(BUTTON_LOGOUT).isDisplayed();
     }
 
-    public boolean loginFaildValidation() {
+    public boolean loginFailedValidation() {
         return driver.findElement(LOGIN_ALERT).isDisplayed();
     }
+
 
 
 

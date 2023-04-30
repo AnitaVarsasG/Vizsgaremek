@@ -67,7 +67,7 @@ class RegisterAndLoginTest {
     @Test
     void testRegistrationWithInvalidData() {
         registerAndLogin.acceptTermsAndConditions();
-        registerAndLogin.invalidRegistration();
+        registerAndLogin.registration("","", "", "");
 
         Assertions.assertFalse(registerAndLogin.registerValidation());
     }
@@ -102,9 +102,19 @@ class RegisterAndLoginTest {
     @Test
     void testLoginFromLandingPageWithInvalidDate() {
         registerAndLogin.acceptTermsAndConditions();
-        registerAndLogin.invalidLogin();
+        registerAndLogin.login("", "");
 
-        Assertions.assertTrue(registerAndLogin.loginFaildValidation());
+        Assertions.assertTrue(registerAndLogin.loginFailedValidation());
+    }
+
+    @Test
+    void userDataModificationTest() {
+
+    }
+
+    @Test
+    void deleteAccountTest() {
+
     }
 
     @AfterEach
