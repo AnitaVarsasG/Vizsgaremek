@@ -19,15 +19,6 @@ public class BlogPage extends Page{
 
     public List<WebElement> getBlogTitles() {
         return driver.findElements(BLOG_ARTICLES);
-
-        /*
-        List<String> blogTitles = new ArrayList<>();
-
-        for (WebElement post : blogPosts) {
-            WebElement title = post.findElement(By.xpath(".//h3/a"));
-            blogTitles.add(title.getText());
-        }
-        return blogTitles.toArray(new String[0]); */
     }
 
     public void clickNextPage() {

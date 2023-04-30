@@ -16,7 +16,6 @@ public class ContactPage extends Page{
     private final By INPUT_EMAIL = By.id("email");
     private final By INPUT_SELECT_PROJECT_TYPE = By.id("projectType");
     private final By INPUT_ABOUT = By.id("aboutProject");
-
     private final By BUTTON_SUBMIT = By.id("contact-form-button");
 
 

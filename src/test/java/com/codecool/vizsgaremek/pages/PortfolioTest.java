@@ -8,7 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
+import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,9 +32,14 @@ class PortfolioTest {
     }
 
     @Test
-    void paginationTest() {
+    void fileTest() throws IOException {
+        List<String> projectTitles = portfolio.getProjectTitles();
+        portfolio.saveTitlesToTxt(projectTitles);
 
+        String[] actualResult = portfolio.readTitlesTxt();
+        String[] expectedResult = new String[]{"KIO-TAPE BRAND", "USE-LESS BRAND", "OSEN CLOCK", "SEAMLESS WATCH", "KIO TAPE"};
 
+        Assertions.assertArrayEquals(expectedResult, actualResult);
     }
 
     @AfterEach

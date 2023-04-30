@@ -25,11 +25,8 @@ public class AboutPage extends Page{
 
         for (WebElement memberCard : memberCards) {
             members.put(memberCard.findElement(By.tagName("h3")).getText(), memberCard.findElement(By.tagName("p")).getText());
-
-            /* WebElement name = memberCard.findElement(By.xpath(".//h3"));
-            memberNames[i] = name.getText();
-            i++;*/
         }
+
         return members;
     }
 }

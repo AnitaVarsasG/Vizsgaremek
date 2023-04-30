@@ -39,35 +39,6 @@ class AboutPageTest {
         aboutPage.navigateToUrl();
     }
 
-    //Read team members' names from teammembers.txt and put them into a String array
-    public String[] readFile() {
-        List<String> members = new ArrayList<>();
-        try {
-            File text = new File("teammembers.txt");
-            Scanner scanner = new Scanner(text);
-            while (scanner.hasNextLine()){
-                String name = scanner.nextLine();
-                members.add(name);
-            }
-        } catch (Exception e) {
-            System.out.println("File is not found");;
-        }
-        return members.toArray(new String[0]);
-    }
-
-
-    @Severity(SeverityLevel.NORMAL)
-    @DisplayName("Verify team member's name")
-    @Description("Verify team member's name")
-    @Test
-    void nameCardTest() {
-        Map<String, String> actualArr = aboutPage.getMembers();
-        /*String[] expectedArr = readFile();
-
-        Assertions.assertArrayEquals(expectedArr, actualArr);*/
-    }
-
-
     @Test
     void memberTest() throws IOException, ParseException {
 
