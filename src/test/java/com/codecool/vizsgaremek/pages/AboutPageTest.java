@@ -6,15 +6,19 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -51,19 +55,40 @@ class AboutPageTest {
         return members.toArray(new String[0]);
     }
 
+
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Verify team member's name")
     @Description("Verify team member's name")
     @Test
     void nameCardTest() {
-        String[] actualArr = aboutPage.getMemberNames();
-        String[] expectedArr = readFile();
+        Map<String, String> actualArr = aboutPage.getMembers();
+        /*String[] expectedArr = readFile();
 
-        Assertions.assertArrayEquals(expectedArr, actualArr);
+        Assertions.assertArrayEquals(expectedArr, actualArr);*/
     }
 
 
-    //TODO compare names and professionals with an expected key-value list
+    @Test
+    void memberTest() throws IOException, ParseException {
+
+        Map<String, String> actualResult = aboutPage.getMembers();
+
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(new FileReader("src/test/resources/teammembers.json"));
+        JSONArray members = (JSONArray) obj;
+        Map<String, String> expectedResult = new HashMap<>();
+
+        for(Object member : members) {
+
+           String key = (String) ((JSONObject) member).get("name");
+           String value = (String) ((JSONObject) member).get("profession");
+
+           expectedResult.put(key, value);
+        }
+
+        Assertions.assertEquals(expectedResult, actualResult);
+    }
+
 
 
     @AfterEach

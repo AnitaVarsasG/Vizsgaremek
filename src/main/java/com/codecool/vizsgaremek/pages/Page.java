@@ -25,16 +25,5 @@ abstract class Page {
         driver.navigate().to(url);
     }
 
-    protected final WebElement findElementOnPage(By locator) {
-        return driver.findElement(locator);
-    }
-
-    protected final List<WebElement> findElementsOnPage(By locator) {
-        return driver.findElements(locator);
-    }
-
-    public final boolean validateUrl(String Url, Pages url) {
-        return Url.equals(url.getURL());
-    }
 }
 

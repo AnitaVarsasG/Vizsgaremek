@@ -36,51 +36,53 @@ public class RegisterAndLogin extends Page{
 
 
     public void acceptTermsAndConditions() {
-        findElementOnPage(BUTTON_TERMS_AND_CONDITIONS).click();
+        driver.findElement(BUTTON_TERMS_AND_CONDITIONS).click();
     }
 
     public void registration(String user, String pwd, String email, String description) {
-        findElementOnPage(BUTTON_REGISTER_FORM).click();
-        findElementOnPage(INPUT_REGISTER_NAME).sendKeys(user);
-        findElementOnPage(INPUT_REGISTER_PWD).sendKeys(pwd);
-        findElementOnPage(INPUT_REGISTER_EMAIL).sendKeys(email);
-        findElementOnPage(INPUT_REGISTER_DESCRIPTION).sendKeys(description);
-        findElementOnPage(BUTTON_REGISTER).click();
+        driver.findElement(BUTTON_REGISTER_FORM).click();
+        driver.findElement(INPUT_REGISTER_NAME).sendKeys(user);
+        driver.findElement(INPUT_REGISTER_PWD).sendKeys(pwd);
+        driver.findElement(INPUT_REGISTER_EMAIL).sendKeys(email);
+        driver.findElement(INPUT_REGISTER_DESCRIPTION).sendKeys(description);
+        driver.findElement(BUTTON_REGISTER).click();
     }
 
+
+    // törölni
     public void invalidRegistration() {
-        findElementOnPage(BUTTON_REGISTER_FORM).click();
-        findElementOnPage(INPUT_REGISTER_NAME).sendKeys("");
-        findElementOnPage(INPUT_REGISTER_PWD).sendKeys("");
-        findElementOnPage(INPUT_REGISTER_EMAIL).sendKeys("");
-        findElementOnPage(INPUT_REGISTER_DESCRIPTION).sendKeys("");
-        findElementOnPage(BUTTON_REGISTER).click();
+        driver.findElement(BUTTON_REGISTER_FORM).click();
+        driver.findElement(INPUT_REGISTER_NAME).sendKeys("");
+        driver.findElement(INPUT_REGISTER_PWD).sendKeys("");
+        driver.findElement(INPUT_REGISTER_EMAIL).sendKeys("");
+        driver.findElement(INPUT_REGISTER_DESCRIPTION).sendKeys("");
+        driver.findElement(BUTTON_REGISTER).click();
     }
 
     public boolean registerValidation() {
-        return findElementOnPage(REGISTER_ALERT).getText().equals("User registered!");
+        return driver.findElement(REGISTER_ALERT).getText().equals("User registered!");
     }
     public void switchToLogin() {
-        findElementOnPage(BUTTON_LOGIN_FORM).click();
+        driver.findElement(BUTTON_LOGIN_FORM).click();
     }
     public void login(String email, String pwd) {
-        findElementOnPage(INPUT_LOGIN_EMAIL).sendKeys(email);
-        findElementOnPage(INPUT_LOGIN_PWD).sendKeys(pwd);
-        findElementOnPage(BUTTON_LOGIN).click();
+        driver.findElement(INPUT_LOGIN_EMAIL).sendKeys(email);
+        driver.findElement(INPUT_LOGIN_PWD).sendKeys(pwd);
+        driver.findElement(BUTTON_LOGIN).click();
     }
-
+// törölni
     public void invalidLogin() {
-        findElementOnPage(INPUT_LOGIN_EMAIL).sendKeys("");
-        findElementOnPage(INPUT_LOGIN_PWD).sendKeys("");
-        findElementOnPage(BUTTON_LOGIN).click();
+        driver.findElement(INPUT_LOGIN_EMAIL).sendKeys("");
+        driver.findElement(INPUT_LOGIN_PWD).sendKeys("");
+        driver.findElement(BUTTON_LOGIN).click();
     }
 
     public boolean loginValidation() {
-        return findElementOnPage(BUTTON_LOGOUT).isDisplayed();
+        return driver.findElement(BUTTON_LOGOUT).isDisplayed();
     }
 
     public boolean loginFaildValidation() {
-        return findElementOnPage(LOGIN_ALERT).isDisplayed();
+        return driver.findElement(LOGIN_ALERT).isDisplayed();
     }
 
 

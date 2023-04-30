@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AboutPage extends Page{
 
@@ -13,19 +15,21 @@ public class AboutPage extends Page{
         super(driver, Pages.URL_ABOUT.getURL());
     }
 
-    private final By CARD_TEAM_MEMBERS = By.xpath("//*[@class='site-team']/div/div/*[@class='col-lg-4 col-md-6']");
+    private final By CARD_TEAM_MEMBERS = By.className("site-team-member-content");
 
-    public String[] getMemberNames() {
-        List<WebElement> memberCards = findElementsOnPage(CARD_TEAM_MEMBERS);
+    public Map<String, String> getMembers() {
+        List<WebElement> memberCards = driver.findElements(CARD_TEAM_MEMBERS);
 
-        String[] memberNames = new String[memberCards.size()];
-        int i = 0;
+        Map<String, String> members = new HashMap<>();
+
 
         for (WebElement memberCard : memberCards) {
-            WebElement name = memberCard.findElement(By.xpath(".//h3"));
+            members.put(memberCard.findElement(By.tagName("h3")).getText(), memberCard.findElement(By.tagName("p")).getText());
+
+            /* WebElement name = memberCard.findElement(By.xpath(".//h3"));
             memberNames[i] = name.getText();
-            i++;
+            i++;*/
         }
-        return memberNames;
+        return members;
     }
 }

@@ -18,7 +18,7 @@ public class BlogPage extends Page{
     private final By BLOG_ARTICLES = By.xpath("//*[@class='row']/div/article/div[@class='site-blog-post-content']");
 
     public List<WebElement> getBlogTitles() {
-        return findElementsOnPage(BLOG_ARTICLES);
+        return driver.findElements(BLOG_ARTICLES);
 
         /*
         List<String> blogTitles = new ArrayList<>();
@@ -31,6 +31,6 @@ public class BlogPage extends Page{
     }
 
     public void clickNextPage() {
-        findElementOnPage(BUTTON_NEXT_PAGE).click();
+        driver.findElement(BUTTON_NEXT_PAGE).click();
     }
 }

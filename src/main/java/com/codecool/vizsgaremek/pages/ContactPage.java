@@ -21,29 +21,37 @@ public class ContactPage extends Page{
 
 
     public void fillNameFields(String firstName, String lastName) {
-        findElementOnPage(INPUT_FIRST_NAME).sendKeys(firstName);
-        findElementOnPage(INPUT_LAST_NAME).sendKeys(lastName);
+        driver.findElement(INPUT_FIRST_NAME).sendKeys(firstName);
+        driver.findElement(INPUT_LAST_NAME).sendKeys(lastName);
     }
 
     public void fillEmailField(String email) {
-        findElementOnPage(INPUT_EMAIL).sendKeys(email);
+        driver.findElement(INPUT_EMAIL).sendKeys(email);
     }
 
     public void selectProjectType(String type) {
-        Select projectType = new Select(findElementOnPage(INPUT_SELECT_PROJECT_TYPE));
+        Select projectType = new Select(driver.findElement(INPUT_SELECT_PROJECT_TYPE));
         projectType.selectByVisibleText(type);
     }
 
     public void fillAboutField(String about) {
-        findElementOnPage(INPUT_ABOUT).sendKeys(about);
+        driver.findElement(INPUT_ABOUT).sendKeys(about);
     }
 
     public void pressSubmit() {
-        findElementOnPage(BUTTON_SUBMIT).click();
+        driver.findElement(BUTTON_SUBMIT).click();
     }
 
     public String validateSubmit() {
         return driver.switchTo().alert().getText();
+    }
+
+    public void acceptAlert() {
+        driver.switchTo().alert().accept();
+    }
+
+    public void refreshPage() {
+        driver.navigate().refresh();
     }
 
 }
