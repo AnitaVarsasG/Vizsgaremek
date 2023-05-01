@@ -4,11 +4,8 @@ import com.codecool.vizsgaremek.enums.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Portfolio extends Page{
+public class PortfolioPage extends Page{
 
-    public Portfolio(WebDriver driver) {
+    public PortfolioPage(WebDriver driver) {
         super(driver, Pages.URL_PORTFOLIO.getURL());
     }
 

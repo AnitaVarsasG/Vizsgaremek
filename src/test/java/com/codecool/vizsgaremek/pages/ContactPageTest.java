@@ -126,8 +126,6 @@ class ContactPageTest {
 
     }
 
-    //TODO fill the form multiply from file data
-
     @AfterEach
     void tearDown() {
 

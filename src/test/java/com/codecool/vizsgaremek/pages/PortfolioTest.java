@@ -12,13 +12,11 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class PortfolioTest {
 
     WebDriver driver;
 
-    Portfolio portfolio;
+    PortfolioPage portfolio;
 
     @BeforeEach
     void setUp() {
@@ -27,7 +25,7 @@ class PortfolioTest {
         driver = WebDriverFactory.getWebDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-        portfolio = new Portfolio(driver);
+        portfolio = new PortfolioPage(driver);
         portfolio.navigateToUrl();
     }
 

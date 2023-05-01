@@ -4,15 +4,14 @@ import com.codecool.vizsgaremek.enums.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class RegisterAndLogin extends Page{
+public class RegisterAndLoginPage extends Page{
 
-    public RegisterAndLogin(WebDriver driver) {
+    //Constructor
+    public RegisterAndLoginPage(WebDriver driver) {
         super(driver, Pages.URL_REGISTER_AND_LOGIN.getURL());
     }
 
-
-
-
+    //Locators
     private final By BUTTON_TERMS_AND_CONDITIONS = By.id("terms-and-conditions-button");
 
     //Registration fields and buttons
@@ -33,12 +32,14 @@ public class RegisterAndLogin extends Page{
     private final By LOGIN_ALERT = By.id("alert");
 
 
+    //Methods
 
-
+    //Click on the "terms and conditions" button on the registration form.
     public void acceptTermsAndConditions() {
         driver.findElement(BUTTON_TERMS_AND_CONDITIONS).click();
     }
 
+    //Fill in the registration form with the provided user, password, email, and description, and submits the form.
     public void registration(String user, String pwd, String email, String description) {
         driver.findElement(BUTTON_REGISTER_FORM).click();
         driver.findElement(INPUT_REGISTER_NAME).sendKeys(user);
@@ -48,28 +49,30 @@ public class RegisterAndLogin extends Page{
         driver.findElement(BUTTON_REGISTER).click();
     }
 
+    //Check whether the registration was successful by looking for an element with the text "User registered!".
     public boolean registerValidation() {
         return driver.findElement(REGISTER_ALERT).getText().equals("User registered!");
     }
+
+    //Switch the registration form to the login form by clicking on the "Login" button.
     public void switchToLogin() {
         driver.findElement(BUTTON_LOGIN_FORM).click();
     }
+
+    //Fill in the login form with the provided email and password, and submits the form.
     public void login(String email, String pwd) {
         driver.findElement(INPUT_LOGIN_EMAIL).sendKeys(email);
         driver.findElement(INPUT_LOGIN_PWD).sendKeys(pwd);
         driver.findElement(BUTTON_LOGIN).click();
     }
 
+    //Check whether the login was successful by looking for the presence of a "Logout" button.
     public boolean loginValidation() {
         return driver.findElement(BUTTON_LOGOUT).isDisplayed();
     }
 
+    //Check whether the login failed by looking for the presence of alert message.
     public boolean loginFailedValidation() {
         return driver.findElement(LOGIN_ALERT).isDisplayed();
     }
-
-
-
-
-
 }

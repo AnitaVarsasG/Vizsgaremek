@@ -1,6 +1,5 @@
 package com.codecool.vizsgaremek.pages;
 
-import com.codecool.vizsgaremek.enums.Pages;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -15,7 +14,7 @@ import java.time.Duration;
 class HomePageTest {
 
     WebDriver driver;
-    RegisterAndLogin registerAndLogin;
+    RegisterAndLoginPage registerAndLogin;
     HomePage homePage;
 
     @BeforeEach
@@ -34,7 +33,7 @@ class HomePageTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-        registerAndLogin = new RegisterAndLogin(driver);
+        registerAndLogin = new RegisterAndLoginPage(driver);
         homePage = new HomePage(driver);
     }
 

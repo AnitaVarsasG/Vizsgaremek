@@ -34,8 +34,6 @@ class BlogPageTest {
         blogPage.navigateToUrl();
     }
 
-    //TODO  Next and Last, previous and First buttons work, check page number
-    //TODO  Collect blogpost URLs and validate posts
 
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Verify all blogposts title")
