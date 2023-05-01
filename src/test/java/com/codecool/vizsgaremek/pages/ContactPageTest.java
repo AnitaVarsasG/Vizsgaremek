@@ -125,16 +125,15 @@ class ContactPageTest {
 
         contactPage.pressSubmit();
 
-        Allure.addAttachment("TC13 - Screenshot", new ByteArrayInputStream(((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES)));
+        String message = contactPage.validateSubmit();
+        contactPage.acceptAlert();
 
-        boolean submitValidation = contactPage.validateSubmit().equals("Message sent!");
-
-        Assertions.assertFalse(submitValidation, "The submission of the contact with empty fields should not be successful");
+        assertNotEquals("Message sent!", message, "The submission of the contact with empty fields should not be successful");
 
     }
 
     @AfterEach
     void tearDown() {
-        driver.quit();
+        //driver.quit();
     }
 }

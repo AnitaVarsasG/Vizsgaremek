@@ -35,10 +35,10 @@ class BlogPageTest {
     }
 
 
-    @Severity(SeverityLevel.NORMAL)
-    @DisplayName("Verify all blogposts title")
-    @Description("Verify all blogposts title")
     @Test
+    @DisplayName("TC15 - Test for all blogposts title")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify that all blogposts title on the page are displayed on the page")
     void blogTitleTest() {
 
         List<String> titles = new ArrayList<>();
@@ -64,6 +64,6 @@ class BlogPageTest {
 
     @AfterEach
     void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 }
