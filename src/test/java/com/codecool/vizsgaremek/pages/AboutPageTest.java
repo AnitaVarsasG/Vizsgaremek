@@ -22,7 +22,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Story("Verify About Page")
+@Story("About Page - Team members")
 class AboutPageTest {
 
     WebDriver driver;
@@ -40,6 +40,9 @@ class AboutPageTest {
     }
 
     @Test
+    @DisplayName("TC07 - Test team members information")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify that team members on the About page are displayed correctly.")
     void memberTest() throws IOException, ParseException {
 
         Map<String, String> actualResult = aboutPage.getMembers();

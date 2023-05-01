@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-class PortfolioTest {
+class PortfolioPageTest {
 
     WebDriver driver;
 
