@@ -1,5 +1,6 @@
 package com.codecool.vizsgaremek.pages;
 
+import com.codecool.vizsgaremek.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -24,16 +25,7 @@ class HomePageTest {
     void setUp() {
         WebDriverManager.chromedriver().setup();
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("incognito", "start-maximized", "disable-extensions", "ignore-certificate-errors");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        //options.addArguments("--headless");
-        //options.addArguments("--window-size=1920,1080");
-        options.addArguments("--remote-allow-origins=*");
-
-        driver = new ChromeDriver(options);
+        driver = WebDriverFactory.getWebDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         registerAndLogin = new RegisterAndLoginPage(driver);
@@ -120,5 +112,6 @@ class HomePageTest {
 
     @AfterEach
     void tearDown() {
+        driver.quit();
     }
 }

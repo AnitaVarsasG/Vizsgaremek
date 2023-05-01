@@ -67,5 +67,6 @@ class AboutPageTest {
 
     @AfterEach
     void tearDown() {
+        driver.quit();
     }
 }

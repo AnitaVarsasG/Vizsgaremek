@@ -134,6 +134,6 @@ class ContactPageTest {
 
     @AfterEach
     void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 }
