@@ -16,13 +16,17 @@ import java.util.Scanner;
 
 public class PortfolioPage extends Page{
 
+    // Constructor
     public PortfolioPage(WebDriver driver) {
         super(driver, Pages.URL_PORTFOLIO.getURL());
     }
 
+    // Locators
     private final By BUTTON_NEXT = By.xpath("//*[@aria-label='Next']");
     private final By PROJECT_CONTENT = By.xpath("//*[@class='site-project-item-content']");
 
+    // Methods
+    // Return a list of titles of all projects
     public List<String> getProjectTitles() {
         List<String> titles = new ArrayList<>();
 
@@ -32,6 +36,7 @@ public class PortfolioPage extends Page{
                 WebElement title = project.findElement(By.xpath("./h3"));
                 titles.add(title.getText());
             }
+            // Verify that Next button is available
             try {
                 driver.findElement(BUTTON_NEXT).click();
             } catch (Exception e) {
@@ -41,6 +46,7 @@ public class PortfolioPage extends Page{
         return titles;
     }
 
+    // Save the list of titles of projects into txt
     public void saveTitlesToTxt(List<String> list) {
         Path file = Paths.get("src/test/resources/projects.txt");
         try {
@@ -50,6 +56,7 @@ public class PortfolioPage extends Page{
         }
     }
 
+    // Return a String array of saved titles
     public String[] readTitlesTxt() throws IOException {
         List<String> projects = new ArrayList<>();
         try {

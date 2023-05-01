@@ -2,16 +2,18 @@ package com.codecool.vizsgaremek.pages;
 
 import com.codecool.vizsgaremek.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
+@Story("Project titles")
 class PortfolioPageTest {
 
     WebDriver driver;
@@ -30,6 +32,9 @@ class PortfolioPageTest {
     }
 
     @Test
+    @DisplayName("TC14 - Test project titles")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify that project titles on the page are displayed correctly")
     void fileTest() throws IOException {
         List<String> projectTitles = portfolio.getProjectTitles();
         portfolio.saveTitlesToTxt(projectTitles);
@@ -42,5 +47,6 @@ class PortfolioPageTest {
 
     @AfterEach
     void tearDown() {
+        driver.quit();
     }
 }
