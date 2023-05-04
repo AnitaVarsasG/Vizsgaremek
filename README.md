@@ -23,3 +23,7 @@ A projekt a következő fájlokat tartalmazza:
  - src/test/resources: A tesztadatokat tartalmazó fájlok.
  - pom.xml: A projekt függőségeit tartalmazó Maven fájl.
  - TestManagerVizsgaremek.xlsx: A teszteseteket tartalmazó xlsx fájl.
+
+## Riport
+
+https://anitavarsasg.github.io/Vizsgaremek/2/
